@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SG Villa41 | Luxury Private Pool Villa</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===============================
+   DESIGN SYSTEM
+=================================*/
+:root{
+    --color-black:#0D0B09;
+    --color-dark:#151210;
+    --color-gold:#C6A75E;
+    --color-text:#F3F1ED;
+    --color-muted:#B9B3A9;
+
+    --transition-slow:1.2s cubic-bezier(.19,1,.22,1);
+}
+
+/* ===============================
+   RESET
+=================================*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--color-black);
+    color:var(--color-text);
+    overflow-x:hidden;
+    line-height:1.7;
+}
+
+h1,h2,h3{
+    font-family:'Playfair Display',serif;
+    letter-spacing:1px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+section{
+    border-bottom:1px solid rgba(255,255,255,0.04);
+}
+section h2::after{
+    content:"";
+    display:block;
+    width:60px;
+    height:2px;
+    background:var(--color-gold);
+    margin-top:15px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 36px;
+    border:1px solid var(--color-gold);
+    color:var(--color-gold);
+    text-decoration:none;
+    letter-spacing:1px;
+    transition:0.4s ease;
+}
+
+.btn:hover{
+    background:var(--color-gold);
+    color:var(--color-black);
+}
+
+/* ===============================
+   CINEMATIC INTRO
+=================================*/
+.intro{
+    position:fixed;
+    inset:0;
+    background:var(--color-black);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:9999;
+}
+
+.intro-logo{
+    font-size:3rem;
+    color:var(--color-gold);
+    letter-spacing:6px;
+    opacity:0;
+    transform:scale(0.8);
+    animation:logoReveal 2s forwards;
+}
+
+@keyframes logoReveal{
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.intro-line{
+    width:0;
+    height:2px;
+    background:var(--color-gold);
+    margin-top:20px;
+    animation:lineExpand 2s forwards;
+    animation-delay:.5s;
+}
+
+@keyframes lineExpand{
+    to{ width:260px; }
+}
+
+/* Fade to transparent overlay */
+.intro.fade-out{
+    animation:introFade 1.5s forwards;
+}
+
+@keyframes introFade{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+/* ===============================
+   NAVIGATION
+=================================*/
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:25px 0;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+    z-index:100;
+}
+
+nav .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.3rem;
+    color:var(--color-gold);
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    color:var(--color-text);
+    text-decoration:none;
+    font-size:.9rem;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--color-gold);
+}
+
+/* ===============================
+   HERO
+=================================*/
+.hero{
+    height:100vh;
+    background:url('pool2.jpg') center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-content h1{
+    font-size:4rem;
+    margin-bottom:25px;
+    color:var(--color-gold);
+}
+
+.hero-content p{
+    color:var(--color-muted);
+    font-size:1.2rem;
+    margin-bottom:40px;
+}
+
+/* ===============================
+   FEATURES GRID
+=================================*/
+.grid{
+    display:grid;
+    gap:40px;
+}
+
+.grid-3{
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.card{
+    background:var(--color-dark);
+    padding:40px;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:var(--color-gold);
+}
+
+.card h3{
+    color:var(--color-gold);
+    margin-bottom:15px;
+}
+
+/* ===============================
+   GALLERY
+=================================*/
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    transition:1s;
+}
+
+.gallery img:hover{
+    transform:scale(1.08);
+}
+
+/* ===============================
+   FOOTER
+=================================*/
+footer{
+    background:#090807;
+    padding:50px 0;
+    text-align:center;
+    color:var(--color-muted);
+}
+
+footer a{
+    color:var(--color-gold);
+    text-decoration:none;
+}
+
+/* ===============================
+   SCROLL ANIMATION
+=================================*/
+.scroll-reveal {
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 1s ease-out;
+}
+
+.scroll-reveal.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<!-- Cinematic Black Intro -->
+<div class="intro" id="intro">
+    <div class="intro-logo">SG VILLA41</div>
+    <div class="intro-line"></div>
+</div>
+
+<nav>
+    <div class="container">
+        <div class="logo">SG Villa41</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Highlights</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#book">Book</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero scroll-reveal">
+    <div class="hero-content scroll-reveal">
+        <h1>SG Villa41 – Private Villa in Krabi</h1>
+        <p>
+            A spacious 752 m² private villa located in Ban Khlong Chi Lat, Krabi.
+            Accommodating up to 9 guests with 1 king bedroom and 5 bathrooms.
+        </p>
+        <a href="https://www.booking.com/hotel/th/sg-villa41.th.html" class="btn">
+            Check Availability
+        </a>
+    </div>
+</section>
+
+<section id="about" class="scroll-reveal">
+    <div class="container scroll-reveal">
+        <h2 style="color:var(--color-gold);margin-bottom:25px;">About The Villa</h2>
+
+        <p>
+            SG Villa41 is an entire private villa offering approximately 752 square meters
+            of living space in Krabi, Thailand.
+        </p>
+
+        <p style="margin-top:15px;">
+            The villa features:
+        </p>
+
+        <ul style="margin-top:15px; line-height:2;">
+            <li>• 1 Bedroom with King-size bed</li>
+            <li>• 5 Private Bathrooms</li>
+            <li>• Accommodation for up to 9 Guests</li>
+            <li>• Fully Equipped Kitchen</li>
+            <li>• Air Conditioning</li>
+            <li>• Balcony with Garden View</li>
+            <li>• Free Wi-Fi throughout the property</li>
+            <li>• Free Private On-site Parking</li>
+            <li>• Non-smoking property</li>
+        </ul>
+    </div>
+</section>
+
+<section id="features" class="scroll-reveal">
+    <div class="container">
+        <h2 style="color:var(--color-gold);margin-bottom:50px;" class="scroll-reveal">Villa Information</h2>
+
+        <div class="grid grid-3">
+            <div class="card scroll-reveal">
+                <h3>Accommodation Details</h3>
+                <p>
+                    Entire Private Villa<br>
+                    752 m² Living Area<br>
+                    1 King Bedroom<br>
+                    5 Bathrooms<br>
+                    Up to 9 Guests
+                </p>
+            </div>
+
+            <div class="card scroll-reveal">
+                <h3>Facilities</h3>
+                <p>
+                    Free Wi-Fi<br>
+                    Free Private Parking<br>
+                    Fully Equipped Kitchen<br>
+                    Air Conditioning<br>
+                    Balcony with Garden View
+                </p>
+            </div>
+
+            <div class="card scroll-reveal">
+                <h3>Check-in Policy</h3>
+                <p>
+                    Check-in: From 15:00<br>
+                    Check-out: Until 11:00<br>
+                    Non-smoking throughout
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="scroll-reveal">
+    <div class="container">
+        <h2 style="color:var(--color-gold);margin-bottom:40px;" class="scroll-reveal">Gallery</h2>
+        <div class="gallery">
+            <img src="pool1.jpg" class="scroll-reveal">
+            <img src="pool2.jpg" class="scroll-reveal">
+            <img src="pool3.jpg" class="scroll-reveal">
+            <img src="pool4.jpg" class="scroll-reveal">
+            <img src="pool5.jpg" class="scroll-reveal">
+            <img src="pool6.jpg" class="scroll-reveal">
+            <img src="pool7.jpg" class="scroll-reveal">
+            <img src="pool8.jpg" class="scroll-reveal">
+            <img src="pool9.jpg" class="scroll-reveal">
+        </div>
+    </div>
+</section>
+
+<section id="book" style="text-align:center;" class="scroll-reveal">
+    <div class="container scroll-reveal">
+        <h2 style="color:var(--color-gold);margin-bottom:30px;">Book Your Stay</h2>
+        <a href="https://www.booking.com/hotel/th/sg-villa41.th.html" class="btn">Book via Booking.com</a>
+    </div>
+</section>
+
+<section id="location" class="scroll-reveal">
+    <div class="container scroll-reveal">
+        <h2 style="color:var(--color-gold);margin-bottom:30px;">Location</h2>
+
+        <p>
+            55/91 Villa41 Krabiyai,
+            Ban Khlong Chi Lat,
+            Krabi 81000, Thailand
+        </p>
+
+        <p style="margin-top:20px;">
+            4.1 km to Krabi Stadium<br>
+            5.3 km to Wat Kaew Korawaram<br>
+            10 km to Krabi International Airport
+        </p>
+    </div>
+</section>
+
+<footer>
+  © 2026 SG Villa41 – Luxury Private Pool Villa<br>
+  Crafted for the Ultimate Relaxation Experience
+</footer>
+
+<script>
+
+// cinematic intro timing
+window.addEventListener("load",()=>{
+    setTimeout(()=>{
+        document.getElementById("intro").classList.add("fade-out");
+    },3000);
+
+    // Scroll Animation
+    const scrollElements = document.querySelectorAll(".scroll-reveal");
+
+    const observer = new IntersectionObserver((entries, observer)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {threshold:0.2});
+
+    scrollElements.forEach(el=>observer.observe(el));
+});
+
+</script>
+
+</body>
+</html>

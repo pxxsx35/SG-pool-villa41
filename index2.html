@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SG Villa41 | Luxury Private Pool Villa</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ===============================
+   DESIGN SYSTEM
+=================================*/
+:root{
+    --color-light:#E9F7FF; /* soft light blue */
+    --color-gold:#FFD27F;
+    --color-dark:#1A2A3A; /* dark text */
+    --color-muted:#4D5C6B;
+    --transition-slow:1.2s cubic-bezier(.19,1,.22,1);
+}
+
+/* ===============================
+   RESET
+=================================*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--color-light);
+    color:var(--color-dark);
+    overflow-x:hidden;
+    line-height:1.7;
+}
+h1,h2,h3{
+    font-family:'Playfair Display',serif;
+    letter-spacing:1px;
+}
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+section{
+    padding:100px 0;
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 1s ease;
+}
+section.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+section h2::after{
+    content:"";
+    display:block;
+    width:60px;
+    height:3px;
+    background:var(--color-gold);
+    margin-top:15px;
+}
+.btn{
+    display:inline-block;
+    padding:14px 36px;
+    border:2px solid var(--color-gold);
+    color:var(--color-gold);
+    text-decoration:none;
+    letter-spacing:1px;
+    transition:0.4s ease;
+    font-weight:500;
+}
+.btn:hover{
+    background:var(--color-gold);
+    color:var(--color-dark);
+}
+
+/* ===============================
+   CINEMATIC INTRO
+=================================*/
+.intro{
+    position:fixed;
+    inset:0;
+    background:var(--color-dark);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:9999;
+}
+.intro-logo{
+    font-size:3rem;
+    color:var(--color-gold);
+    letter-spacing:6px;
+    opacity:0;
+    transform:scale(0.8);
+    animation:logoReveal 2s forwards;
+}
+@keyframes logoReveal{
+    to{opacity:1; transform:scale(1);}
+}
+.intro-line{
+    width:0;
+    height:3px;
+    background:var(--color-gold);
+    margin-top:20px;
+    animation:lineExpand 2s forwards;
+    animation-delay:.5s;
+}
+@keyframes lineExpand{ to{ width:260px; } }
+.intro.fade-out{ animation:introFade 1.5s forwards; }
+@keyframes introFade{ to{ opacity:0; visibility:hidden; } }
+
+/* ===============================
+   NAVIGATION
+=================================*/
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 0;
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(8px);
+    z-index:100;
+}
+nav .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.logo{
+    font-size:1.4rem;
+    color:var(--color-dark);
+    font-weight:700;
+}
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+nav a{
+    color:var(--color-dark);
+    text-decoration:none;
+    font-size:.95rem;
+    transition:.3s;
+    font-weight:500;
+}
+nav a:hover{ color:var(--color-gold); }
+
+/* ===============================
+   HERO
+=================================*/
+.hero{
+    height:100vh;
+    background:url('pool2.jpg') center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,0.25); /* lighten overlay for readability */
+    backdrop-filter:blur(2px);
+}
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:800px;
+    opacity:0;
+    transform:translateY(50px);
+    transition:var(--transition-slow);
+}
+.hero-content.show{
+    opacity:1;
+    transform:translateY(0);
+}
+.hero h1{
+    font-size:3.5rem;
+    margin-bottom:25px;
+    color:var(--color-gold);
+}
+.hero p{
+    color:var(--color-dark);
+    font-size:1.2rem;
+    margin-bottom:35px;
+}
+
+/* ===============================
+   FEATURES GRID
+=================================*/
+.grid{
+    display:grid;
+    gap:40px;
+}
+.grid-3{
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+}
+.card{
+    background:#FFFFFF;
+    padding:35px;
+    border-radius:10px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.12);
+    transition:.5s;
+}
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 12px 30px rgba(0,0,0,0.18);
+}
+.card h3{
+    color:var(--color-gold);
+    margin-bottom:15px;
+}
+
+/* ===============================
+   GALLERY
+=================================*/
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:15px;
+}
+.gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:8px;
+    transition:0.8s;
+}
+.gallery img:hover{ transform:scale(1.07); }
+
+/* ===============================
+   FOOTER
+=================================*/
+footer{
+    background:var(--color-dark);
+    padding:50px 0;
+    text-align:center;
+    color:var(--color-muted);
+}
+footer a{ color:var(--color-gold); text-decoration:none; }
+
+</style>
+</head>
+<body>
+
+<!-- Cinematic Intro -->
+<div class="intro" id="intro">
+    <div class="intro-logo">SG VILLA41</div>
+    <div class="intro-line"></div>
+</div>
+
+<nav>
+    <div class="container">
+        <div class="logo">SG Villa41</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Highlights</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#book">Book</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>SG Villa41 – Luxury Pool Villa</h1>
+        <p>
+            Spacious 752 m² villa in Krabi for up to 9 guests with 1 king bedroom and 5 bathrooms.
+        </p>
+        <a href="https://www.booking.com/hotel/th/sg-villa41.th.html" class="btn">
+            Check Availability
+        </a>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <h2>About The Villa</h2>
+        <p>
+            SG Villa41 is a fully private villa with modern amenities, a private pool,
+            fully equipped kitchen, air-conditioned bedrooms, and balcony with garden view.
+        </p>
+        <ul style="margin-top:15px; line-height:1.8;">
+            <li>1 Bedroom (King-size)</li>
+            <li>5 Bathrooms</li>
+            <li>Accommodation up to 9 Guests</li>
+            <li>Fully Equipped Kitchen</li>
+            <li>Air Conditioning</li>
+            <li>Balcony with Garden View</li>
+            <li>Free Wi-Fi</li>
+            <li>Free Private Parking</li>
+            <li>Non-smoking property</li>
+        </ul>
+    </div>
+</section>
+
+<section id="features">
+    <div class="container">
+        <h2>Villa Highlights</h2>
+        <div class="grid grid-3">
+            <div class="card">
+                <h3>Accommodation</h3>
+                <p>Entire Private Villa – 752 m² living area, 1 King Bedroom, 5 Bathrooms, up to 9 guests</p>
+            </div>
+            <div class="card">
+                <h3>Facilities</h3>
+                <p>Private Pool, Fully Equipped Kitchen, Air Conditioning, Balcony, Free Wi-Fi & Parking</p>
+            </div>
+            <div class="card">
+                <h3>Check-in Policy</h3>
+                <p>Check-in: From 15:00<br>Check-out: Until 11:00<br>Non-smoking property</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <div class="container">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="pool1.jpg">
+            <img src="pool2.jpg">
+            <img src="pool3.jpg">
+            <img src="pool4.jpg">
+            <img src="pool5.jpg">
+            <img src="pool6.jpg">
+            <img src="pool7.jpg">
+            <img src="pool8.jpg">
+            <img src="pool9.jpg">
+        </div>
+    </div>
+</section>
+
+<section id="book" style="text-align:center;">
+    <div class="container">
+        <h2>Book Your Stay</h2>
+        <a href="https://www.booking.com/hotel/th/sg-villa41.th.html" class="btn">Book via Booking.com</a>
+    </div>
+</section>
+
+<section id="location">
+    <div class="container">
+        <h2>Location</h2>
+        <p>55/91 Villa41 Krabiyai, Ban Khlong Chi Lat, Krabi 81000, Thailand</p>
+        <p style="margin-top:15px;">
+            4.1 km to Krabi Stadium<br>
+            5.3 km to Wat Kaew Korawaram<br>
+            10 km to Krabi International Airport
+        </p>
+    </div>
+</section>
+
+<footer>
+  © 2026 SG Villa41 – Luxury Private Pool Villa<br>
+  Crafted for the Ultimate Relaxation Experience
+</footer>
+
+<script>
+// cinematic intro timing
+window.addEventListener("load",()=>{
+    setTimeout(()=>{
+        document.getElementById("intro").classList.add("fade-out");
+        document.querySelector(".hero-content").classList.add("show");
+    },2500);
+});
+
+// scroll animation
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+},{threshold:0.2});
+sections.forEach(sec=>observer.observe(sec));
+</script>
+
+</body>
+</html>
