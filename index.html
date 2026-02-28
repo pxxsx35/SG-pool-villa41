@@ -23,6 +23,8 @@
     --transition-slow:1.2s cubic-bezier(.19,1,.22,1);
 }
 
+
+
 /* ===============================
    RESET
 =================================*/
@@ -81,6 +83,40 @@ section h2::after{
     color:var(--color-black);
 }
 
+/* ===============================
+   LUXURY VIDEO SECTION
+=================================*/
+
+.video-showcase{
+    padding:120px 0;
+    background:var(--color-dark);
+    text-align:center;
+}
+
+.video-container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto 60px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
+}
+
+.video-container video{
+    width:100%;
+    display:block;
+}
+
+.video-text h2{
+    color:var(--color-gold);
+    margin-bottom:20px;
+}
+
+.video-text p{
+    color:var(--color-muted);
+    max-width:700px;
+    margin:auto;
+}
 /* ===============================
    CINEMATIC INTRO
 =================================*/
@@ -317,6 +353,7 @@ footer a{
 
 <section class="hero scroll-reveal">
     <div class="hero-content scroll-reveal">
+        
         <h1>SG Villa41 – Private Villa in Krabi</h1>
         <p>
             A spacious 752 m² private villa located in Ban Khlong Chi Lat, Krabi.
@@ -327,6 +364,21 @@ footer a{
         </a>
     </div>
 </section>
+
+<section class="video-showcase scroll-reveal">
+
+    <div class="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="villa.mp4" type="video/mp4">
+        </video>
+    </div>
+
+
+
+
+</section>
+
+
 
 <section id="about" class="scroll-reveal">
     <div class="container scroll-reveal">
