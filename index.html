@@ -11,7 +11,7 @@
 <style>
 
 /* ===============================
-   DESIGN SYSTEM
+    DESIGN SYSTEM
 =================================*/
 :root{
     --color-black:#0D0B09;
@@ -23,10 +23,8 @@
     --transition-slow:1.2s cubic-bezier(.19,1,.22,1);
 }
 
-
-
 /* ===============================
-   RESET
+    RESET
 =================================*/
 *{
     margin:0;
@@ -84,7 +82,7 @@ section h2::after{
 }
 
 /* ===============================
-   LUXURY VIDEO SECTION
+    LUXURY VIDEO SECTION (UPDATED)
 =================================*/
 
 .video-showcase{
@@ -93,19 +91,28 @@ section h2::after{
     text-align:center;
 }
 
-/* ตัวควบคุมขนาดและตำแหน่งหลัก */
+/* ปรับให้ในมือถือกว้าง 95% เพื่อความชัดเจน */
 .video-wrapper {
-    width: 40%;          /* กำหนดความกว้างตามที่ต้องการ */
-    margin: 0 auto;      /* จัดให้อยู่กึ่งกลางหน้าจอแนวนอน */
+    width: 100%; 
+    margin: 0 auto;
+    border: 1px solid rgba(198, 167, 94, 0.2); /* เพิ่มขอบทองจางๆ ให้ดูหรู */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* ตัวควบคุมสัดส่วนวิดีโอ (Responsive Aspect Ratio) */
+/* เมื่อหน้าจอกว้างขึ้น (Desktop) ให้เหลือ 40% */
+@media (min-width: 768px) {
+    .video-wrapper {
+        width: 40%;
+    }
+}
+
 .video-container {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* อัตราส่วน 16:9 (9 / 16 * 100) */
+    padding-bottom: 56.25%; /* อัตราส่วน 16:9 */
     overflow: hidden;
+    background: #000;
 }
 
 .video-container iframe {
@@ -114,11 +121,13 @@ section h2::after{
     left: 0;
     width: 100%;
     height: 100%;
+    border: 0;
+    /* ซูมเล็กน้อยเพื่อซ่อน UI YouTube บางส่วน */
+    transform: scale(1.02); 
 }
 
-.video-container video{
-    width:100%;
-    display:block;
+.video-text {
+    margin-top: 40px;
 }
 
 .video-text h2{
@@ -131,8 +140,9 @@ section h2::after{
     max-width:700px;
     margin:auto;
 }
+
 /* ===============================
-   CINEMATIC INTRO
+    CINEMATIC INTRO
 =================================*/
 .intro{
     position:fixed;
@@ -174,7 +184,6 @@ section h2::after{
     to{ width:260px; }
 }
 
-/* Fade to transparent overlay */
 .intro.fade-out{
     animation:introFade 1.5s forwards;
 }
@@ -187,7 +196,7 @@ section h2::after{
 }
 
 /* ===============================
-   NAVIGATION
+    NAVIGATION
 =================================*/
 nav{
     position:fixed;
@@ -229,7 +238,7 @@ nav a:hover{
 }
 
 /* ===============================
-   HERO
+    HERO
 =================================*/
 .hero{
     height:100vh;
@@ -266,7 +275,7 @@ nav a:hover{
 }
 
 /* ===============================
-   FEATURES GRID
+    FEATURES GRID
 =================================*/
 .grid{
     display:grid;
@@ -295,7 +304,7 @@ nav a:hover{
 }
 
 /* ===============================
-   GALLERY
+    GALLERY
 =================================*/
 .gallery{
     display:grid;
@@ -315,7 +324,7 @@ nav a:hover{
 }
 
 /* ===============================
-   FOOTER
+    FOOTER
 =================================*/
 footer{
     background:#090807;
@@ -330,7 +339,7 @@ footer a{
 }
 
 /* ===============================
-   SCROLL ANIMATION
+    SCROLL ANIMATION
 =================================*/
 .scroll-reveal {
     opacity:0;
